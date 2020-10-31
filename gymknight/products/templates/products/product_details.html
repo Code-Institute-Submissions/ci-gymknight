@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                <div class="image-container my-5">
+                  <!-- Product image -->
+                    {% if product.image %}
+                        <a href="{{ product.image.url }}" class="img-fluid" target="_blank">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                        <!-- If no image found -->
+                        {% else %}
+                        <a href="">
+                            <img class="card-img-top img-fluid" src="/media/noimage.svg" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-details-container mb-5 mt-md-5">
+                    <p class="font-weight-bold product-title">{{ product.name }}</p>
+                    <p class="lead">€{{ product.price }}</p>
+                    {% if product.rating %}
+                        <p class="text-orange">Customers rated this: <i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</p>
+                    {% else %}
+                        <p class="text-muted">No Rating</p>
+                    {% endif %}
+                    <p class="mt-4">{{ product.description }}</p>
+                </div>
+            </div>
+        </div>
+{% endblock %}
