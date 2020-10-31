@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-lg-8">
+        {% if shoppingbag_items %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">SKU</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Unit price</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td>@</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+        <div class="text-center">
+        <h2 class="text-muted">Your shopping bag is empty.</h2>
+        <a class="btn gk-button btn-lg" href="{% url 'products' %}" role="button">Browse shop</a>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
