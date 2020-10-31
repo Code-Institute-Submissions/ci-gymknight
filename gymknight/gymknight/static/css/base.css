@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+html {
+  overflow-x: hidden;
+}
+
+/* General body style for whole page */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar styles */
+.navbar-brand {
+    width: 100px;
+}
+
+/* GymKnight button style */
+.gk-button {
+  background-color: #FF715B;
+  color: white;
+  border: none;
+}
+
+.gk-button:hover {
+  background-color: #c53721;
+  color: white;
+}
+
+/* Jumbotrons styles */
+.services-jumbotron,
+.merch-jumbotron {
+  height: 60vh !important;
+  text-align: center;
+  padding-top: 30vh;
+}
+
+.merch-jumbotron,
+.services-jumbotron {
+  background-position: top;
+  border-radius: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.services-jumbotron {
+  background-image: url("/static/img/services-bg.jpg");
+}
+
+.merch-jumbotron {
+  background-image: url("/static/img/merch-bg.jpg");
+}
+
+.text-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 20px;
+}
+
+.highlight {
+  font-weight: 700;
+  color: #FF715B;
+}
+
+.jumbotron {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 0;
+}
+
+.text-orange {
+  color: #FF715B;
+}
+
+.text-black {
+  color: black;
+}
+
+a.nav-link:hover {
+  color: #FF715B !important;
+}
+
+.section-title {
+  padding-top: 50px;
+}
+
+.product-title {
+  font-size: 3rem;
+}
+
+.badge {
+  font-size: 90%;
+}
+
+.badge-secondary {
+  background-color: #343a4094;
+}
+
+.reasons-container i {
+  font-size: 5rem;
+  padding: 50px;
+  color: #FF715B;
+}
+
+.reasons-container {
+  margin-bottom: 50px;
+}
+
+.filter-toggle {
+  border: 1px solid #FF715B;
+  margin-left: 50px;
+}
+
+/* Footer styles */
+footer {
+  background-color: #FF715B;
+  color: white;
+}
+
+footer img {
+  width: 100px;
+}
+
+footer .address {
+  margin: 25px 0 25px 25px;
+}
+
+/* Custom media queries for sm devices */
+@media (max-width: 768px) {
+  .services-jumbotron,
+  .merch-jumbotron {
+    height: 50vh !important;
+    text-align: center;
+    padding-top: 10vh;
+  }
+  .text-container {
+    position: absolute;
+    top: 150px;
+  }
+  .text-container h1 {
+    font-size: 2rem;
+  }
+  .product-tile {
+    font-size: 1rem;
+  }
+  .filter-toggle {
+    margin-left: 0;
+    width: 100%
+  }
+  .w-50 {
+    width: 100% !important;
+  }
+}
