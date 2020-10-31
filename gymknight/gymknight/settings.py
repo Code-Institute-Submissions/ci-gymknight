@@ -87,6 +87,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
+                'shoppingbag.contexts.shopppingbag_contents'
             ],
         },
     },
@@ -157,3 +158,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Define std delivery threshold for purchases and std delivery percentrage 
+FREE_DELIVERY_MINIMUM = 30
+STD_DELIVERY_CHARGE = 6.99
