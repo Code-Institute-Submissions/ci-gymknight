@@ -1,0 +1,69 @@
+{% load static %}
+<!-- Begin navigation-->
+<nav class="navbar navbar-expand-lg navbar-light w-100">
+  <a class="navbar-brand" href="#"><img src="{% static 'img/gk-logo.png' %}" alt="GymKnight Logo" class='img-fluid'>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
+      </li>
+      <li class="nav-igit tem">
+        <a class="nav-link" href="#">Fitness & Nutrition</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Merchandise
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'products' %}?category=mens">Mens</a>
+          <a class="dropdown-item" href="{% url 'products' %}?category=womens">Ladies</a>
+          <a class="dropdown-item" href="{% url 'products' %}?category=accessories">Accessories</a>
+          <a class="dropdown-item" href="{% url 'products' %}?category=home-living">Homeware & Living</a>
+          <a class="dropdown-item" href="{% url 'products' %}?category=mens,womans,accessories,home-living">All products</a>
+        </div>
+      </li>
+    </ul>
+    <!-- Account and basket controls -->
+    <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+      <li class="list-inline-item dropdown">
+        <a class="nav-link text-black" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="text-center">
+            <div><i class="fas fa-user fa-lg"></i></div>
+            <p class="my-0">Your Account</p>
+          </div>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="user-options">
+          {% if request.user.is_authenticated %}
+          {% if request.user.is_superuser %}
+          <a href="" class="dropdown-item">Manage products</a>
+          {% endif %}
+          <a href="" class="dropdown-item">My Profile</a>
+          <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+          {% else %}
+          <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+          <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+          {% endif %}
+        </div>
+      </li>
+      <li class="list-inline-item">
+        <a class="{% if grand_total %}text-orange{% else %} text-black {% endif %} nav-link" href="">
+          <div class="text-center">
+            <div><i class="fas fa-shopping-cart"></i></div>
+            <p class="my-0">
+              {% if grand_total %}
+              ${{ grand_total|floatformat:2 }}
+              {% else %}
+              €0.00
+              {% endif %}
+            </p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
