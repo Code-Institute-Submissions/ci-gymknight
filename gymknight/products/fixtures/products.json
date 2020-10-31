@@ -1,0 +1,142 @@
+[
+   {
+      "pk":1,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0001",
+         "name":"Mens V Neck Tee - White",
+         "description":"100% cotton, v-neck mens tee for every day",
+         "price":21.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0001.png"
+      }
+   },
+{
+      "pk":2,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0002",
+         "name":"Mens V Neck Tee - Black",
+         "description":"100% cotton, v-neck mens tee for every day",
+         "price":21.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0002.png"
+      }
+   },
+{
+      "pk":3,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0003",
+         "name":"Mens V Neck Tee - Blue",
+         "description":"100% cotton, v-neck mens tee for every day",
+         "price":21.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0003.png"
+      }
+   },
+{
+      "pk":4,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0004",
+         "name":"Mens V Neck Tee - Navy",
+         "description":"100% cotton, v-neck mens tee for every day",
+         "price":21.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0004.png"
+      }
+   },
+{
+      "pk":5,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0005",
+         "name":"Mens Performance Tee - Grey",
+         "description":"Nicest materials to keep you cool during your workouts. Great for wearing to the gym and running",
+         "price":23.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0005.png"
+      }
+   },
+{
+      "pk":6,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0006",
+         "name":"Mens Performance Tee - Dark Grey",
+         "description":"Nicest materials to keep you cool during your workouts. Great for wearing to the gym and running",
+         "price":23.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0006.png"
+      }
+   },
+{
+      "pk":7,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0007",
+         "name":"Mens Performance Tee - Green",
+         "description":"Nicest materials to keep you cool during your workouts. Great for wearing to the gym and running",
+         "price":23.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0007.png"
+      }
+   },
+{
+      "pk":8,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0008",
+         "name":"Mens Performance Tee - Blue",
+         "description":"Nicest materials to keep you cool during your workouts. Great for wearing to the gym and running",
+         "price":23.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0008.png"
+      }
+   },
+{
+      "pk":9,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0009",
+         "name":"Mens Performance Tee - Red",
+         "description":"Nicest materials to keep you cool during your workouts. Great for wearing to the gym and running",
+         "price":23.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0009.png"
+      }
+   },
+{
+      "pk":10,
+      "model":"products.product",
+      "fields":{
+         "sku":"i0010",
+         "name":"Mens Performance Tee - Red",
+         "description":"Nicest materials to keep you cool during your workouts. Great for wearing to the gym and running",
+         "price":23.99,
+         "category":1,
+         "rating":4.7,
+         "image_url":"",
+         "image":"i0010.png"
+      }
+   }
+]
