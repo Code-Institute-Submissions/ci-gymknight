@@ -14,6 +14,13 @@ body {
     width: 100px;
 }
 
+/* Alert styles */
+.alert-info {
+  background-color: #ff715b88;
+  border: none;
+  color: black;
+}
+
 /* GymKnight button style */
 .gk-button {
   background-color: #FF715B;
