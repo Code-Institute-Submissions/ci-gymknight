@@ -1,11 +1,24 @@
 from django.conf import settings
 from decimal import Decimal
+from django.shortcuts import get_object_or_404
+from products.models import Product
 
-def shopppingbag_contents(request):
+def shopppingcart_contents(request):
     
     shoppingcart_items = []
     total = 0
     product_count = 0
+    cart = request.session.get('cart', {})
+    
+    for item_id, quantity in cart.items():
+        product = get_object_or_404(Product, pk=item_id)
+        total += quantity * product.price
+        product_count += quantity
+        shoppingcart_items.append({
+            'item_id': item_id,
+            'quantity': quantity,
+            'product': product,
+        })
     
     if total < settings.FREE_DELIVERY_MINIMUM:
         delivery_charge = Decimal(settings.STD_DELIVERY_CHARGE)
@@ -18,13 +31,12 @@ def shopppingbag_contents(request):
         
     context = {
         'shoppingcart_items': shoppingcart_items,
-        'total': 'total',
+        'total': total,
         'grand_total': grand_total,
         'delivery_charge': delivery_charge,
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_minimum': settings.FREE_DELIVERY_MINIMUM,
         'standard_delivery_charge': settings.STD_DELIVERY_CHARGE
     }
-    
-    context = {}
+
     return context
