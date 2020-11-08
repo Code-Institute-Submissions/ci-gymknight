@@ -3,7 +3,7 @@ from decimal import Decimal
 
 def shopppingbag_contents(request):
     
-    shoppingbag_items = []
+    shoppingcart_items = []
     total = 0
     product_count = 0
     
@@ -17,7 +17,7 @@ def shopppingbag_contents(request):
     grand_total = delivery_charge + total
         
     context = {
-        'shoppingbag_items': shoppingbag_items,
+        'shoppingcart_items': shoppingcart_items,
         'total': 'total',
         'grand_total': grand_total,
         'delivery_charge': delivery_charge,

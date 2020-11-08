@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'products',
-    'shoppingbag'
+    'shoppingcart'
 ]
 
 SITE_ID = 2
@@ -87,7 +87,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
-                'shoppingbag.contexts.shopppingbag_contents'
+                'shoppingcart.contexts.shopppingbag_contents'
             ],
         },
     },
