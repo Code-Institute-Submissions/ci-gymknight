@@ -5,9 +5,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-lg-8">
+            <h2 class="text-center">Your shopping cart</h2>
             {% if shoppingcart_items %}
             <table class="table table-bordered">
-                <thead>
+                <thead class="text-center">
                     <tr>
                         <th scope="col">SKU</th>
                         <th scope="col">Product Info</th>
@@ -33,13 +34,46 @@
                         <td>€{{ item.product.price}}</td>
                         <td>€{{ item.product.price}}</td>
                     </tr>
+                    {% endfor %}
+                    <tr class="text-right">
+                        <td colspan='4'>Your total is:</td>
+                        <td>
+                            <strong>€{{ total|floatformat:2 }}</strong>
+                        </td>
+                    </tr>
+                    <tr class="text-right">
+                        <td colspan='4'>
+                            Delivery:
+                            {% if free_delivery_delta > 0 %}
+                            <p class="highlight">Spend €{{ free_delivery_delta }} more to qualify for free delivery</p>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <strong>€{{ delivery_charge|floatformat:2 }}</strong>
+                        </td>
+                    </tr>
+                    <tr class="text-right">
+                        <td colspan='4'>Grand total:</td>
+                        <td>
+                            <strong>€{{ grand_total|floatformat:2 }}</strong>
+                        </td>
+                    </tr>
                 </tbody>
-                {% endfor %}
             </table>
+            <div class="row">
+                <div class="col-12 text-right">
+                    <a class="btn gk-button btn-lg" href="#" role="button"><i class="fas fa-long-arrow-alt-left"></i>
+                        Continue shopping</a>
+                </div>
+                <div class="col-12 text-right mt-2">
+                    <a class="btn gk-button btn-lg" href="#" role="button"><i class="fas fa-lock"></i>
+                        Secure checkout </a>
+                </div>
+            </div>
         </div>
         {% else %}
         <div class="text-center">
-            <h2 class="text-muted">Your shopping bag is empty.</h2>
+            <h2 class="text-muted">Your shopping cart is empty.</h2>
             <a class="btn gk-button btn-lg" href="{% url 'products' %}" role="button">Browse shop</a>
         </div>
         {% endif %}

@@ -22,7 +22,7 @@ def shopppingcart_contents(request):
     
     if total < settings.FREE_DELIVERY_MINIMUM:
         delivery_charge = Decimal(settings.STD_DELIVERY_CHARGE)
-        free_delivery_delta = total - settings.FREE_DELIVERY_MINIMUM
+        free_delivery_delta = settings.FREE_DELIVERY_MINIMUM - total
     else:
         delivery_charge = 0
         free_delivery_delta = 0
