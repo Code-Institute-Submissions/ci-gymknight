@@ -26,7 +26,7 @@ def shopppingcart_contents(request):
                 product_count += quantity
                 shoppingcart_items.append({
                     'item_id': item_id,
-                    'quantity': item_data,
+                    'quantity': quantity,
                     'product': product,
                     'size': size,
                 })

@@ -27,11 +27,22 @@
                                 <div class="media-body">
                                     <h5 class="mt-0"><strong>{{ item.product.name }}</strong></h5>
                                     {{ item.product.description }}
-                                    <p>Size: </p>{% if item.product.has_size %}{{ item.size|upper }}{% else %}Size N/A{% endif %}
+                                    <p>Size: {% if item.product.has_size %}{{ item.size|upper }}{% else %}Size N/A{% endif %}</p>
+                                    <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-size="{{ item.size }}">Remove item</a>
                                 </div>
                             </div>
                         </td>
-                        <td>{{ item.quantity }}</td>
+                        <td>
+                        <form action="#" method="post" class="form update-form">
+                        {% csrf_token %}
+                        <input class="form-control" type="text" value="{{ item.quantity }}" name="quantity" min="1" max="49" type="number"
+                        data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                        <a class="update-cart">Update cart</a>
+                        {% if item.product.has_sizes %}
+                            <input type="hidden" name="product_size" value="{{ item.size }}">
+                        {% endif %}
+                        </form>
+                        </td>
                         <td>€{{ item.product.price}}</td>
                         <td>€{{ item.product.price}}</td>
                     </tr>
@@ -83,4 +94,30 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-cart').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('size');
+        var url = `/cart/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
+
 {% endblock %}
