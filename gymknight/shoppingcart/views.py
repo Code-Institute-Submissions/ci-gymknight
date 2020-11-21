@@ -8,15 +8,17 @@ def view_shoppingcart(request):
 
 
 def add_to_cart(request, item_id):
-    """ Add a quantity of the specified product to the shopping cart """
-
+    """ Add a quantity of the product to the shopping cart """
+    
+    # Get quantity and redirect_url from the post request
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
     cart = request.session.get('cart', {})
-
+    
+    # If there is a size adjust the inner value accordingly
     if size:
         if item_id in list(cart.keys()):
             if size in cart[item_id]['items_by_size'].keys():
@@ -30,12 +32,14 @@ def add_to_cart(request, item_id):
             cart[item_id] += quantity
         else:
             cart[item_id] = quantity
-
+    # Overwrite session cart with updated version 
     request.session['cart'] = cart
+    # Redirect user to the same page they came from
     return redirect(redirect_url)
 
 def update_cart(request, item_id):
     '''Update an item in the shopping cart'''
+    
     # Get quantity and redirect_url from the post request
     quantity = int(request.POST['quantity'])
     size = None

@@ -49,13 +49,15 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
+    # context
     context = {
         'products': products,
         'search_term': query,
         'current_categories': cateogries,
         'current_sorting': current_sorting,
     }
-
+    
+    # Render template and return context
     return render(request, 'products/products.html', context)
 
 
@@ -67,5 +69,6 @@ def product_details(request, product_id):
     context = {
         'product': product,
     }
-
+    
+    # Render template and return context
     return render(request, 'products/product_details.html', context)
