@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load shoppingcart_tools %}
 
 {% block content %}
 <div class="container-fluid">
@@ -44,7 +45,7 @@
                         </form>
                         </td>
                         <td>€{{ item.product.price}}</td>
-                        <td>€{{ item.product.price}}</td>
+                        <td>€{{ item.product.price | calculate_subtotal:item.quantity }}</td>
                     </tr>
                     {% endfor %}
                     <tr class="text-right">
