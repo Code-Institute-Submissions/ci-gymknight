@@ -51,7 +51,7 @@
         </div>
       </li>
       <li class="list-inline-item">
-        <a class="{% if grand_total %}text-orange{% else %} text-black {% endif %} nav-link" href="{% url 'view_shoppingcart' %}">
+        <a class="{% if total %}text-orange{% else %} text-black {% endif %} nav-link" href="{% url 'view_shoppingcart' %}">
           <div class="text-center">
             <div><i class="fas fa-shopping-cart"></i></div>
             <p class="my-0">

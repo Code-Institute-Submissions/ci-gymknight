@@ -23,21 +23,21 @@
                         <td>{{ item.product.sku|upper }}</td>
                         <td>
                             <div class="media">
-                                <img src="{{ item.product.image.url }}" class="w-25 mr-3" alt="...">
+                                <img src="{{ item.product.image.url }}" class="w-25 mr-3" alt="Image of {{ item.product.name }}">
                                 <div class="media-body">
                                     <h5 class="mt-0"><strong>{{ item.product.name }}</strong></h5>
                                     {{ item.product.description }}
                                     <p>Size: {% if item.product.has_size %}{{ item.size|upper }}{% else %}Size N/A{% endif %}</p>
-                                    <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-size="{{ item.size }}">Remove item</a>
+                                    <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}">Remove</a>
                                 </div>
                             </div>
                         </td>
                         <td>
-                        <form action="#" method="post" class="form update-form">
+                        <form class="form update-item-form" method="POST" action="{% url 'update_cart' item.item_id %}">
                         {% csrf_token %}
                         <input class="form-control" type="text" value="{{ item.quantity }}" name="quantity" min="1" max="49" type="number"
                         data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                        <a class="update-cart">Update cart</a>
+                        <button type="submit" class="btn btn-link update-cart">Update cart</button>
                         {% if item.product.has_sizes %}
                             <input type="hidden" name="product_size" value="{{ item.size }}">
                         {% endif %}
@@ -99,19 +99,13 @@
 {{ block.super }}
 
 <script type="text/javascript">
-    // Update quantity on click
-    $('.update-cart').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
-
-    // Remove item and reload on click
+    // Remove item and reload 
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('size');
-        var url = `/cart/remove/${itemId}`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
+        var size = $(this).data('product_size');
+        var url = `/cart/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
 
         $.post(url, data)
          .done(function() {
