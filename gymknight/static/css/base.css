@@ -21,6 +21,13 @@ body {
   color: black;
 }
 
+.message-container {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 999999;
+}
+
 /* GymKnight button style */
 .gk-button {
   background-color: #FF715B;
