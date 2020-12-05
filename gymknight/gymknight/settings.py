@@ -172,3 +172,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Define std delivery threshold for purchases and std delivery percentrage 
 FREE_DELIVERY_MINIMUM = 30
 STD_DELIVERY_CHARGE = 6.99
+
+# stripe settings
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
