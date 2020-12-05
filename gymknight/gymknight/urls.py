@@ -27,5 +27,7 @@ urlpatterns = [
     path('products/', include('products.urls')),
     # Shopping cart url
     path('cart/', include('shoppingcart.urls')),
+    # Checkout url
+    path('checkout/', include('checkout.urls')),
     # Setting for getting the media url from settings
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -146,6 +146,18 @@ footer .address {
    cursor: pointer;
 }
 
+/* Checkout app styles */
+#card-element {
+  border-radius: .25rem ;
+  padding: .375rem .75rem;
+  border: 1px solid #ced4da;;
+  height: calc(1.5em + .75rem + 1.5px);
+  width: 100%;
+  background: white;
+  color: #495057;
+  line-height: ;
+}
+
 /* Custom media queries for sm devices */
 @media (max-width: 768px) {
   .services-jumbotron,
