@@ -6,7 +6,8 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-
+<div class="wrapper">
+<div class="text-center">
 <h1>{% trans "Sign In" %}</h1>
 
 {% get_providers as socialaccount_providers %}
@@ -39,8 +40,11 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+  <a class="small" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <br>
+  <button class="btn btn-lg gk-button mt-3" type="submit"><i class="fas fa-user-lock"></i> {% trans "Sign In" %}</button>
 </form>
+</div>
+</div>
 
 {% endblock %}
