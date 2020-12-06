@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 from products.models import Product
+from django_countries.fields import CountryField
 
 # Create your models here.
 
@@ -13,7 +14,7 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
-    country = models.CharField(max_length=40, null=False, blank=False)
+    country = CountryField(blank_label="Country*", null=False, blank=False)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     city_or_town = models.CharField(max_length=40, null=False, blank=False)
     address_line1 = models.CharField(max_length=80, null=False, blank=False)
@@ -23,6 +24,8 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    original_cart = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
     
     def _generate_order_number(self):
         '''Private method used to generate random order number'''

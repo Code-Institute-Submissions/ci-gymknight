@@ -34,7 +34,7 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY   
     
     if request.method == 'POST':
-        bag = request.session.get('cart', {})
+        cart = request.session.get('cart', {})
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -49,8 +49,12 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
-            for item_id, item_data in bag.items():
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order = order_form.save(commit=False)
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+            order.save()
+            for item_id, item_data in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):
@@ -75,7 +79,7 @@ def checkout(request):
                         "Please contact us via email to let us know.")
                     )
                     order.delete()
-                    return redirect(reverse('view_bag'))
+                    return redirect(reverse('view_shoppingcart'))
 
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('successful_checkout', args=[order.order_no]))
@@ -83,9 +87,9 @@ def checkout(request):
             messages.error(request, 'There was an error with your form. \
                 Please check all fields and try again.')
     else:
-        bag = request.session.get('cart', {})
-        if not bag:
-            messages.error(request, "You have no items in your bag.")
+        cart = request.session.get('cart', {})
+        if not cart:
+            messages.error(request, "You have no items in your cart.")
             return redirect(reverse('products'))
     
     current_shoppingcart = shopppingcart_contents(request)
