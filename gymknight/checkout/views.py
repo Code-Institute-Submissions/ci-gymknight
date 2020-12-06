@@ -1,14 +1,31 @@
-from django.shortcuts import get_object_or_404, render, redirect, reverse
+from django.shortcuts import get_object_or_404, render, redirect, reverse, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from .forms import OrderForm
 from products.models import Product
 from .models import Order, OrderLineItem
 from django.conf import settings
 import stripe
+import json
 
 from shoppingcart.contexts import shopppingcart_contents
 
-# Create your views here.
+# Handle saving info to user accounts
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'There has been an error processing'
+                       ' your payment. Please try again later')
+        return HttpResponse(content=e, status=400)
 
 def checkout(request):
     '''View to return the checkout app'''
