@@ -34,61 +34,48 @@ GymKnight is an online webshop for fitness enthusiasts to purchase premium cloth
  
 ### User stories
 
-📌 As a user I want to access the website, browse and read a post
+📌 As a user I want to access the website and browse products on offer
 
-📌 As a user I want to sort all posts on the website alphabetically, by date, or popularity
+📌 As a user I want to be able to see product details, image and available sizes
 
-📌 As a user I want to search for a particular post
+📌 As a user I want to be able to add desired item to my cart
 
-📌 As a user I want to be able to see the author of the post I am reading and other posts that visit their blog
+📌 As a user I want to be able to purchase the desired product(s) and get them shipped to my address
 
-📌 As a user I want to register and create my own blog
+📌 As a user I want to be able to pay using my debit or credit card
 
-📌 As a user I want to be able to change my blog description and password
+📌 As a user I want to be able to register for an account
 
-📌 As a user I want to post posts to my blog
+📌 As a user I want to save entered details for future purchases
 
-📌 As a user I want to be able to edit and delete my own posts
+📌 As a user I want to be able to see my previous purchases
 
 ### Strategy
 
-The main design goal is to provide users with clean and sleek website with easy-to-read textual content that is meaningfully organised.
+The main design goal is to provide a modern and sleek UI that presents products in an organised way (using categories) and allow users seamless start to finish experience.
 
 ### Scope
 
-For readers Bloggy is a way to read about their favourite topics and for creators, Bloggy is a way to put their content out there for the world to see.
+GymKnight is an online webshop for fitness enthusiasts to purchase premium clothing products as well as home and training accessories.
 
 ### Structure
 
-Index page features a jumbotron with a slogan of "Home of the blogs you love" and a action button. This action button will either bring the user to the login/register page if they're not logged in or it will read 'Write a new post' if the user is authenticated and will bring them to a page where user is able to write a new post. Underneath the jumbotron, users are able to search for posts by title, description or text within, and are able to sort all the posts visible on the home page by: Newest first, oldest first, title (A-Z), title (Z-A) & popularity (based on number of views).
+Index page is simple and contains a call a jumbotron that shows users new gear that's available in the webshop & a call to action button to go to the products page.
+Underneath that users can see the reasons why to choose GymKnight - premium materials, free shipping over certain order amount and because it's an Irish brand.
 
-Search page contains a search bar with search and cancel buttons underneath which found posts are displayed.
+User is able to view the products based on the category - Mens, Ladies, Accessories, Homeware & Living and by viewing all products. 
 
-Single post page contains the post title & post author details at the top with creator's profile picture and a link to visit their profile/blog. Underneath that is the post image supplied by the user and finally the body of the post.
+Products page features card layout of all available products in the specified category. The cards feature image of the product, their description, category they belong to & their rating.
 
-Profile page/Blog page displays user's blog title & description as well as user's profile picture. Underneath that, all of user's posts are displayed. 
+By clicking on the product user is able to see all the same details as well as product price, and is able to select the size and quantity to be added to their cart.
 
-Edit profile page features a form where user is asked for their current password, new password and confirmation of the new password (if they wish to change their password), and a field where they can edit their profile image.
+Shopping cart page displays product SKU, Product info (including name, description, size and quantity) as well as unit price and the subtotal. Bottom three rows display current total, delivery charge (if applicable) and the grand total for the order. From here, users are able to proceed to checkout or go back and continue shopping.
 
-Login page contains simple login form that prompts user for their username and password. Users that aren't registered yet are invited to register underneath the form.
+Checkout page displays user's oder summary, total, delivery and grand total amounts in a table. On the right hand side (desktop layout) user are asked for their personal, delivery and credit/debit card details. 
 
-Register form contains seven form fields that asks user for:
-1. Username
-2. Profile picture URL
-3. Email address
-4. Blog title
-5. Blog description
-6. Password & 
-7. Repeat of their password
+Once the order is successfully paid for, the user is presented with a confirmation screen which displays the entered information about delivery and products ordered.
 
-reCAPTCHA is utilised to check that user is not a robot.
-
-Create a post page is a form page that that asks user to input:
-* Desired post title
-* Post description 
-* Body of their post
-* Post image URL 
-* Read time (in minutes)
+User account page (accessible for registered users only) displays saved user delivery information which they're able to edit as well as their order history. 
 
 ### Skeleton
 
@@ -96,208 +83,113 @@ Balsamiq Wireframes has been used to develop wireframes for this website.
 
 Wireframes are available under links below and are stored within _wireframes_ folder inside _docs_ folder.
 
-[Home page wireframe](bloggy/docs/landing-page.png)
+[Home page wireframe](/docs/wireframes/home-page.png)
 
-[Blog page wireframe](bloggy/docs/blog-page.png)
+[Merch/products wireframe](/docs/wireframes/merch-page.png)
 
-[Post page wireframe](bloggy/docs/single-post-page.png)
+[Shopping cart wireframe](/docs/wireframes/shopping-cart.png)
 
-[Login page wireframe](bloggy/docs/login-page.png)
+[Single item page wireframe](/docs/wireframes/single-item.png)
+
+[User profile page wireframe](/docs/wireframes/user-profile.png)
 
 ### Surface
 
-![Project colour scheme](./bloggy/docs/colour-scheme.png "Project colour scheme")
 
 | Colour name       | Colour RGB Code    
 | -------------     |:-------------:| 
-| Bleu De France    |#1585E2
-| Flickr Pink       |#F1007C
+| Bittwesweet       |#FF715B
 | White             |#FFFFF
 
-Font used on the website is [Noto Sans KR from Google Fonts](https://fonts.google.com/specimen/Noto+Sans+KR?query=noto+sans+kr)
+Font used on the website is [Montserrat from Google Fonts](https://fonts.google.com/specimen/Montserrat)
 
 ## Features
 
-
 ### Existing Features
 
-🟢 **Home page** (C**R**UD)
+🟢 **Home page**
 
-Home page displays all posts to the user and user is able to search for specific post based on title, description or body of the post and is able to sort all posts by: Newest first, oldest first, title (A-Z), title (Z-A) & popularity (based on number of views).
-User can also click on 'Start creating' to either log in (if not already logged in) or to be redirected to 'New post' page.
+Users are able to navigate using top navigation menu, access current products, their account and shopping card. Users can also view the reasons why choose GymKnight.
 
-🟢 **Login/Register page** (**CR**UD)
+🟢 **Browse products on offer**
 
-Anyone can register an user account and a blog for free.
+User is able to view the products based on the category - Mens, Ladies, Accessories, Homeware & Living and by viewing all products. 
 
-When registering user is prompted for their personal details - username, email address and password as well as details about their blog such as blog title and description.
+🟢 **View product details**
 
-User can also log into their account which if successful will bring them to the user page.
+Users are able to view product details by clicking on the product name. Details include name, price, description, rating, sizes available and an option to add the item to cart
 
-🟢 **User page** (**CR**UD)
+🟢 **Add items to cart**
 
-User's page is where logged in user's are able view all their posts (in a card view), read the post, edit the post or delete the post.
+Once the user selects the size they wish to add, they can add the product by simply clicking add to cart on the product details view.
 
-🟢 **Profile/Blog page** (C**R**UD)
+🟢 **View cart**
 
-Profile page/Blog page is where anyone can view one user's blog, it's description and all their posts. 
+By clicking on the cart icon on the upper right of the screen (desktop layout), users are able to navigate to their cart and see current items in their cart.
+Users are also able to update quantity and remove the product from the cart entirely.
 
-🟢 **New post page** (**C**RUD)
+🟢 **Proceed with order and payment**
 
-Registered users can create new posts by clicking 'Start creating' on home page or by clicking 'New Post' on their user page.
+Once in their cart, user can click on 'Secure Checkout' button which will navigate them to the checkout view where they're required to enter personal and delivery details as well as their card details.
 
-To create new post, users need to:
-1. Give the post a title, 
-2. Add some text to the body of the blog, 
-3. Add short description (blurb), 
-5. Add in approximate reading time
+🟢 **Create an account**
 
-Post image URL is optional and a default image will be assigned should the user decide not to fill out this field.
+By clicking on Account in the main menu, users are able to register for an user account which will be used to save future orders into their history as well as delivery details.
 
-🟢 **Edit post page** (CR**U**D)
+🟢 **Edit saved personal and shipping details**
 
-Only post creator (& superuser Admin) can edit a post.
+By clicking on "Edit profile" user can edit their delivery details with new information.
 
-The form is exactly the same as outlined in [new post page](#new-post-page) section above but it is pre-filled with post data pulled from the database.
+🟢 **View order history**
 
-🟢 **Delete post page** (CRU**D**)
-
-Only post creator (& superuser Admin) can delete a post.
-
-🟢 **Search** (C**R**UD)
-
-Users are able to search for posts based on post title, description or text within the body. 
-
-🟢 **Administrative features** (**CRUD**)
-
-'admin' user is registered by myself and is able to edit and delete all posts for the database. 
-
+Beside their details users are able to view their past orders in chronological order and they can also view the contents of the orders themselves.
 ### Features Left to Implement
 
-🔴 **Likes/favourites feature**
+🔴 **Wishlist**
 
-It would be good to implement a feature that allows users to favourite/like posts and save them to their 'favourites' library.
-
+It would be great to implement a wishlist feature like those Amazon and the likes have for saving interesting products for later.
 ## Technologies Used
 
 1. HTML5
 2. CSS3
-3. JavaScript
-4. Python 
-5. [Flask v1.1.2](https://flask.palletsprojects.com/en/1.1.x/changelog/#version-1-1-x)
-  * WTForms 
-  * PyMongo
-  * slugify
-  * bcrypt
-  * flask-paginate
-6. MongoDB 
-7. [Summernote WYSIWYG Editor](https://summernote.org/)
-8. [reCAPTCHA](https://www.google.com/recaptcha/about/) 
-9. [Materialize CSS](https://materializecss.com/)
-10. [Materialize Icons](https://materializecss.com/icons.html)
-11. [Google Fonts](https://fonts.google.com/)
+3. [Google Fonts](https://fonts.google.com/)
+4. JavaScript
+5. Python 
+6. [Django 3.1](https://docs.djangoproject.com/en/3.1/)
+7. AWS S3
+8. Heroku for Deployment
 
 ## Testing
 
-Please refer to [TESTING.md](bloggy/docs/TESTING.md) for testing documentation
+Please refer to [TESTING.md](docs/TESTING.md) for testing documentation
 
 ## Deployment
 
-### To deploy locally
+To deploy this app on your own, you can clone this repository or download it and upload again to your own repository via CLI.
 
-Pre-requirements to deploy this project are:
-1. You must have [Python3](https://www.python.org/downloads/) installed as well as [PIP](https://pip.pypa.io/en/stable/installing/) to install all dependencies
-2. A code editor of your choice such as [VSCode](https://code.visualstudio.com/) or [Atom](https://atom.io/). 
-3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to pull data from github
-4. [MongoDB](https://www.mongodb.com/) to store data into the database (note you'll need to create one on your own using details provided below)
+(Creation of AWS account, setting up Stripe, setting up S3 bucket and the rest has been omitted in interest of keeping this as a summary. Expert knowledge in the deployment of Django apps is assumed)
 
-Once all this is in place follow the steps below:
-1. Clone this git repo using GIT CLI:
-    *  `git clone https://github.com/ib-skoric/ci-bloggy.git`
-2. Create `env.py` file that contains correct MONGO_URI and login credentials as well as all SECRET KEY values required for CAPTCHA & other modules
-3. Run `FLASK_APP=run.py` & `FLASK_ENV=development` or alternatively create a `flaskenv` file with these commands
-4. Install all required modules from the `requirements.txt` file:
-    * `sudo -H pip3 -r requirements.txt`
-5. Sign up for a free MongoDB account via this [link](https://www.mongodb.com/) and create a new collection called __bloggy__ (note all lowercase letters)
+1. Create a Heroku account if you don't have one already.
+2. Create a new app
+3. Navigate to _Settings_ tab for your app and click on _Reveal Config Vars_
+4. Populate config vars with the following details: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, DATABASE_URL, EMAIL_HOST_PASS, EMAIL_HOST_USER, SECRET_KEY, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_WH_SECRET, USE_AWS (this should be set to True for production).
+5. Create an _env.py_ file in and IDE you wish to use (VSCode, Atom), populate the above variables using your AWS/Stripe details and add your _env.py_ file to _.gitignore_ file **(this is very important)**
+6. Create a _requirements.txt_ file by typing `pip3 freeze > requirements.txt` in the command line of your IDE
+7. Create a Procfile in the root of your project and copy-paste the following `gymknight.wsgi:application app.py`
+8. Commit all and push to remote origin on GitHub
+9. Under _Deployment_ tab in your Heroku app, connect your GitHub account and select desired repo you wish to deploy.
 
-### Collections structure 
-
-**blogs structure**
-
-| Field name       | Data type   
-| -------------     |:-------------:| 
-| _id               | ObjectId()
-| owner_id          | ObjectId()
-| title             | String
-| description       | String
-
-**posts structure**
-
-| Field name       | Data type   
-| -------------     |:-------------:| 
-| _id               | ObjectId()
-| blog_id           | ObjectId()
-| user_id           | ObjectId()
-| title             | String
-| description       | String
-| body       | String
-| last_updated       | String
-| read_time       | Int32
-| img_url       | String
-| views       | Int32
-
-
-**user structure**
-| Field name       | Data type   
-| -------------     |:-------------:| 
-| _id               | ObjectId()
-| username          | String
-| email             | String
-| password          | String
-
-
-### To deploy remotely
-
-I've personally used [Heroku](https://heroku.com/) to deploy this project for submission. The below steps explain how I deployed my app to Heroku. If you're using a different platform to deploy your app, please check and follow relevant documentation.
-
-1. Register for a free account on [Heroku](https://heroku.com/)
-2. Create requirements.txt file so they can be installed on Heroku once deployed
-* `pip3 freeze --local > requirements.txt`
-3. Create Procfile (case sensitive) to inform Heroku what type of application is being deployed
-* `echo web: python run.py > Procfile` or alternatively create a Procfile with this line of code using your GUI/IDE.
-4. Log into your Heroku account and choose New -> Create new app
-5. Input your name (must be unique) and choose region closest to you.
-6. After app is created, Heroku will automatically bring you to *Deploy* tab. Under *Deployment Method* choose Github. If you haven't already log into your GitHub account and grant Heroku access to your GitHub data.
-7. Type in your repository name and click search, once found, click *Connect*
-8. Very imporant part is to declare Config Vars for your app under *Settings* -> *Reveal config vars*
-9. Config Vars for this app are:
-
-    | Config Var       | Value   
-    | -------------     |:-------------:| 
-    | IP               | 0.0.0.0
-    | PORT           | 5000
-    | DEBUG        | False or True (False for production)
-    | MONGO_URI        | Your unique Mongo URI goes here
-    | MONGO_DBNAME        | bloggy
-    | SECRET_KEY       | Your unique secret key
-    | RECAPTCHA_PUBLIC_KEY | Your unique public key supplied by Google
-    | RECAPTCHA_PRIVATE_KEY | Your unique private key supplied by Google
+Heroku CLI can also be used to push files directly to Heroku via the command line.
 
 ## Credits
 
+CodeInstitute's Boutique Ado tutorial was followed in the making of this project.
 
 ### Content
 
-__All posts posted on Bloggy are under sole copyright of their respective creators and the creator of this application (Ivan Branimir Skoric) is not responsible for any copyright breaches or foul language that could be contained within users' posts__
-
+All the textual has been created by myself.
 ### Media
 
-__All images posted on Bloggy are under sole copyright of their respective creators and the creator application (Ivan Branimir Skoric) is not responsible for any copyright breaches that could be commited by other users__
+Product images have been generated using [Printify](https://printify.com)
 
-SVG Illustration used in jumbotron have been sourced from [Undraw](https://undraw.co/illustrations). 
-
-Default profile image & default post image sourced from [Pixaby](pixabay.com)
-
-### Acknowledgements
-
-[Tim Nelson](https://github.com/TravelTimN) for his great updated Flask tutorials that he sent me after I posted a question about MongoDB and Flask.
+Stock images have been sourced from [Pexels](https://www.pexels.com/)
