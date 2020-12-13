@@ -27,7 +27,7 @@ SECRET_KEY = 'p$==xp0$2ux%h5^vp7pnufs1c##0v0l*hzj3z1_=2ox!9^^pl5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ci-gymknight.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['ci-gymknight.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
