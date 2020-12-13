@@ -59,10 +59,15 @@
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mt-4 product">
       <div class="card h-100 mx-auto" style="width: 18rem;">
         {% if product.image %}
-        <img src="/media/{{product.image}}" class="card-img-top" alt="...">
+        <a href="{{ product.image.url }}" class="img-fluid" target="_blank">
+          <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+        </a>
+        <!-- If no image found -->
         {% else %}
-        <img src="/media/noimage.svg" class="card-img-top" alt="...">
-        {% endif %}
+        <a href="">
+          <img class="card-img-top img-fluid" src="/media/noimage.svg" alt="{{ product.name }}">
+        </a>
+        {% endif %}%}
         <div class="card-body">
           <h5 class="card-title"><a href="{% url 'product_details' product.id %}">{{ product.name }}</a></h5>
           <p class="card-text">{{ product.description }}</p>
