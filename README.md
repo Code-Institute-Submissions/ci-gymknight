@@ -50,6 +50,8 @@ GymKnight is an online webshop for fitness enthusiasts to purchase premium cloth
 
 📌 As a user I want to be able to see my previous purchases
 
+📌 As a store owner I want to be able to add, edit and remove products
+
 ### Strategy
 
 The main design goal is to provide a modern and sleek UI that presents products in an organised way (using categories) and allow users seamless start to finish experience.
@@ -98,7 +100,7 @@ Wireframes are available under links below and are stored within _wireframes_ fo
 
 | Colour name       | Colour RGB Code    
 | -------------     |:-------------:| 
-| Bittwesweet       |#FF715B
+| Bittersweet       |#FF715B
 | White             |#FFFFF
 
 Font used on the website is [Montserrat from Google Fonts](https://fonts.google.com/specimen/Montserrat)
@@ -161,7 +163,7 @@ It would be great to implement a wishlist feature like those Amazon and the like
 
 ## Testing
 
-Please refer to [TESTING.md](docs/TESTING.md) for testing documentation
+Please refer to [TESTING.md](/docs/TESTING.md) for testing documentation
 
 ## Deployment
 
