@@ -1,1 +1,1 @@
-web: gunicorn gymknight.wswgi:application
+web: gunicorn gymknight.wsgi:application
