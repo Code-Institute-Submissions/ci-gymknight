@@ -93,20 +93,20 @@
                 </div>
             </div>
         </div>
-        {% else %}
-        <div class="text-center">
-            <h2 class="text-muted">Your shopping cart is empty.</h2>
-            <a class="btn gk-button btn-lg" href="{% url 'products' %}" role="button">Browse shop</a>
-        </div>
-        {% endif %}
         <div class="col-sm-12 col-lg-4">
             <h2 class="text-center">Just so you know...</h2>
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-info" role="alert">
                 All of your orders can be exchanged within 30 days of order being delivered to you, for an added peace
                 of mind.
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="text-center">
+        <h2 class="text-muted">Your shopping cart is empty.</h2>
+        <a class="btn gk-button btn-lg" href="{% url 'products' %}" role="button">Browse shop</a>
+    </div>
+    {% endif %}
     {% endblock %}
     {% block postloadjs %}
     {{ block.super }}
