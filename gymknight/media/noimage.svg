@@ -76,7 +76,7 @@
         >
         <dc:subject
           >
-          <rdf:Bag
+          <rdf:cart
             >
             <rdf:li
               >camiseta</rdf:li
@@ -90,7 +90,7 @@
             <rdf:li
               >shirt</rdf:li
             >
-          </rdf:Bag
+          </rdf:cart
           >
         </dc:subject
         >

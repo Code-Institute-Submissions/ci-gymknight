@@ -4,11 +4,9 @@ from django.dispatch import receiver
 from .models import OrderLineItem
 
 @receiver(post_save, sender=OrderLineItem)
-def update_onsave(sender, instance, created, **kwargs):
-    ''' Update order total on creation of line item '''
+def update_on_save(sender, instance, created, **kwargs):
     instance.order.update_total()
-    
+
 @receiver(post_delete, sender=OrderLineItem)
-def update_onsave(sender, instance, **kwargs):
-    ''' Update order total on deletion of line item '''
+def update_on_delete(sender, instance, **kwargs):
     instance.order.update_total()

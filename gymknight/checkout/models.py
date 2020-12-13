@@ -6,6 +6,7 @@ from django.conf import settings
 from products.models import Product
 from django_countries.fields import CountryField
 from userprofile.models import UserProfile
+from decimal import Decimal
 
 # Create your models here.
 
@@ -33,23 +34,23 @@ class Order(models.Model):
     def _generate_order_number(self):
         '''Private method used to generate random order number'''
         return uuid.uuid4().hex.upper()
-    
-    def save(self, *args, **kwargs):
-        ''' override default save function'''
-        if not self.order_no:
-            self.order_no = self._generate_order_number()
-        super().save(*args, **kwargs)
+
     
     def update_total(self):
         '''update total everytime an individual product is added'''
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total_sum']
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_MINIMUM:
             self.delivery_cost = settings.STD_DELIVERY_CHARGE
         else:
             self.delivery_cost = 0
-        self.grand_total = self.order_total + self.delivery_cost
+        self.grand_total = Decimal(self.order_total) + Decimal(self.delivery_cost)
         self.save()
-        
+    
+    def save(self, *args, **kwargs):
+        if not self.order_no:
+            self.order_no = self._generate_order_number()
+        super().save(*args, **kwargs)
+    
     def __str__(self):
         return self.order_no
 

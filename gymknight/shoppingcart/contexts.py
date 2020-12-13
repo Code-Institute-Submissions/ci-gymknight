@@ -41,7 +41,7 @@ def shopppingcart_contents(request):
                 
     if total < settings.FREE_DELIVERY_MINIMUM:
         # Check if total is less than the free delivery minimum
-        delivery_charge = Decimal(settings.STD_DELIVERY_CHARGE)
+        delivery_charge = settings.STD_DELIVERY_CHARGE
         free_delivery_delta = settings.FREE_DELIVERY_MINIMUM - total
     else:
         # If it's over then delivery is free
@@ -49,7 +49,7 @@ def shopppingcart_contents(request):
         free_delivery_delta = 0
     
     # Grand total is items + delivery charge
-    grand_total = delivery_charge + total
+    grand_total = Decimal(delivery_charge) + Decimal(total)
     
     # Define and return contexts
     context = {

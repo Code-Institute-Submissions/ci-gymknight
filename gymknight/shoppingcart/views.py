@@ -109,5 +109,5 @@ def remove_item(request, item_id):
         return HttpResponse(status=200)
     # Raise exception if there is an error
     except Exception as e:
-        messages.error(request, f'Error removing product from your bag')
+        messages.error(request, f'Error removing product from your cart')
         return HttpResponse(status=500)

@@ -1,8 +1,10 @@
+from userprofile.models import UserProfile
 from django.shortcuts import get_object_or_404, render, redirect, reverse, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from .forms import OrderForm
 from products.models import Product
+from userprofile.forms import UserProfileForm
 from .models import Order, OrderLineItem
 from django.conf import settings
 import stripe
@@ -100,7 +102,25 @@ def checkout(request):
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
     )
-    order_form = OrderForm()
+    
+    if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'full_name': profile.user.get_full_name(),
+                    'email': profile.user.email,
+                    'phone_number': profile.default_phone_number,
+                    'country': profile.default_country,
+                    'postcode': profile.default_postcode,
+                    'city_or_town': profile.default_city_or_town,
+                    'address_line1': profile.default_address_line1,
+                    'address_line2': profile.default_address_line2,
+                    'county': profile.default_county,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
+    else:
+        order_form = OrderForm()
 
     # check for public key
     if not stripe_public_key:
@@ -119,6 +139,28 @@ def successful_checkout(request, order_no):
     '''View to be displayed once payment has been completed successfully'''
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_no=order_no)
+    
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        # Attach the user's profile to the order
+        order.user_profile = profile
+        order.save()
+
+        # Save the user's info
+        if save_info:
+            profile_data = {
+                'default_phone_number': order.phone_number,
+                'default_country': order.country,
+                'default_postcode': order.postcode,
+                'default_city_or_town': order.city_or_town,
+                'default_address_line1': order.address_line1,
+                'default_address_line2': order.address_line2,
+                'default_county': order.county,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+    
     messages.success(request, f'You order has been successfully processed \
         Your order number is {order_no}. A confirmation \
         email will be sent to your email: {order.email}.')
