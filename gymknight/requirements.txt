@@ -8,6 +8,7 @@ click==7.1.2
 cryptography==3.0
 defusedxml==0.6.0
 distlib==0.3.1
+dj-database-url==0.5.0
 Django==3.0.1
 django-allauth==0.41.0
 django-countries==7.0
@@ -26,6 +27,7 @@ mccabe==0.6.1
 mysql-connector==2.2.9
 oauthlib==3.1.0
 Pillow==7.2.0
+psycopg2-binary==2.8.6
 pycparser==2.20
 pylint==2.5.3
 pymongo==3.11.0
