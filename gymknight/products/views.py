@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
 from .forms import ProductForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def all_products(request):
@@ -62,9 +63,15 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-
+@login_required
 def product_details(request, product_id):
     '''View that returns detailed view of a single product'''
+    
+    # Check if user is admin
+    if not request.user.is_superuser:
+        messages.error(request, 'This page is for admin users only.')
+        return redirect(reverse('home'))
+    
     product = get_object_or_404(Product, pk=product_id)
 
     context = {
@@ -74,14 +81,22 @@ def product_details(request, product_id):
     # Render template and return context
     return render(request, 'products/product_details.html', context)
 
+
+@login_required
 def add_product(request):
     '''Add products to the webshop'''
+    
+    # Check if user is admin
+    if not request.user.is_superuser:
+        messages.error(request, 'This page is for admin users only.')
+        return redirect(reverse('home'))
+    
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product = form.save()
             messages.success(request, 'You have successfully added the product to the webshop')
-            return redirect(reverse('add_product'))
+            return redirect(reverse('product_details', args=[product.id]))
         else:
             messages.error(request, 'FAILED: Product not added. Please double check your form.')
     else:
@@ -93,3 +108,49 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def edit_product(request, product_id):
+    '''Edit products in the webshop'''
+    
+    # Check if user is admin
+    if not request.user.is_superuser:
+        messages.error(request, 'This page is for admin users only.')
+        return redirect(reverse('home'))
+    
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Changes successfully saved to the product')
+            return redirect(reverse('product_details', args=[product.id]))
+        else:
+            messages.error(request, 'FAILED: Product not updated. Please double check your form.')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'Editing product {product.name}')
+
+    template = 'products/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_product(request, product_id):
+    '''Delete the product from the inventory'''
+    
+    # Check if user is admin
+    if not request.user.is_superuser:
+        messages.error(request, 'This page is for admin users only.')
+        return redirect(reverse('home'))
+    
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product has been deleted')
+    return redirect(reverse('products'))

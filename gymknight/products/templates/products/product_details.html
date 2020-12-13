@@ -22,6 +22,14 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="product-details-container mb-5 mt-md-5">
                 <p class="font-weight-bold product-title">{{ product.name }}</p>
+                {% if request.user.is_superuser %}
+                <div class="mb-3">
+                    <a href="{% url 'edit_product' product.id %}"><i class="fas fa-edit"></i> Edit</a> |
+                    <a class="text-danger" href="{% url 'delete_product' product.id %}"><i class="fas fa-times"></i>
+                        Delete</a>
+                </small>
+                </div>
+                {% endif %}
                 <p class="lead">€{{ product.price }}</p>
                 {% if product.rating %}
                 <p class="text-orange">Customers rated this: <i class="fas fa-star mr-1"></i>{{ product.rating }} / 5
@@ -29,6 +37,7 @@
                 {% else %}
                 <p class="text-muted">No Rating</p>
                 {% endif %}
+
                 <p class="mt-4">{{ product.description }}</p>
             </div>
             <form action="{% url 'add_to_cart' product.id %}" method="post">
@@ -49,7 +58,6 @@
                 <button type="submit" class="btn gk-button mt-5"><i class="fas fa-cart-plus"></i> Add to
                     cart</button>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
-
             </form>
         </div>
     </div>
