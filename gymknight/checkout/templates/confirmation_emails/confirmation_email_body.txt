@@ -1,0 +1,24 @@
+Dear {{ order.full_name }}!
+
+This email is to confirm your order with GymKnight. Below are details of your order:
+
+Order Number: {{ order.order_no }}
+Order Date: {{ order.date }}
+
+Order Total: €{{ order.order_total }}
+Delivery: €{{ order.delivery_cost }}
+Grand Total: €{{ order.grand_total }}
+
+Your shipping details:
+{{ order.address_line1 }},
+{{ order.city_or_town }}, 
+{{ order.country }}
+
+The delivery service will be contacting you on {{ order.phone_number }} should there be any delays or updates.
+
+Should you have any queries about your order, please contact us at: {{ contact_email }}.
+
+Thank you very much for you order, we hope you enjoy your items.
+
+Best Regards,
+GymKnight
