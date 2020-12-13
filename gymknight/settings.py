@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'shoppingcart',
     'checkout',
     'userprofile',
+    'gymknight'
 ]
 
 SITE_ID = 2
