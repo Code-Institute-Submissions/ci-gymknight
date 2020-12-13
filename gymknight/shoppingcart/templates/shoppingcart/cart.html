@@ -24,7 +24,11 @@
                         <td>{{ item.product.sku|upper }}</td>
                         <td>
                             <div class="media">
-                                <img src="{{ item.product.image.url }}" class="w-25 mr-3" alt="Image of {{ item.product.name }}">
+                                {% if item.product.image %}
+                                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                        {% else %}
+                                        <img class="img-fluid" src="{{ MEDIA_URL }}noimage.svg" alt="{{ item.product.name }}">
+                                        {% endif %}
                                 <div class="media-body">
                                     <h5 class="mt-0"><strong>{{ item.product.name }}</strong></h5>
                                     {{ item.product.description }}
