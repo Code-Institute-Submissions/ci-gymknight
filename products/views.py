@@ -62,15 +62,8 @@ def all_products(request):
     # Render template and return context
     return render(request, 'products/products.html', context)
 
-
-@login_required
 def product_details(request, product_id):
     '''View that returns detailed view of a single product'''
-    
-    # Check if user is admin
-    if not request.user.is_superuser:
-        messages.error(request, 'This page is for admin users only.')
-        return redirect(reverse('home'))
     
     product = get_object_or_404(Product, pk=product_id)
 

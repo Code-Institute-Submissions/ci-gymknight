@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .webhooks import webhook
+from .webhook import webhook
 
 #  Home url pattern
 urlpatterns = [

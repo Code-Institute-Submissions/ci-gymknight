@@ -25,28 +25,32 @@
                         <td>
                             <div class="media">
                                 {% if item.product.image %}
-                                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                                        {% else %}
-                                        <img class="img-fluid" src="{{ MEDIA_URL }}noimage.svg" alt="{{ item.product.name }}">
-                                        {% endif %}
+                                <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                {% else %}
+                                <img class="img-fluid" src="{{ MEDIA_URL }}noimage.svg" alt="{{ item.product.name }}">
+                                {% endif %}
                                 <div class="media-body">
                                     <h5 class="mt-0"><strong>{{ item.product.name }}</strong></h5>
                                     {{ item.product.description }}
-                                    <p>Size: {% if item.product.has_size %}{{ item.size|upper }}{% else %}Size N/A{% endif %}</p>
-                                    <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}">Remove</a>
+                                    <p>Size: {% if item.product.has_size %}{{ item.size|upper }}{% else %}Size
+                                        N/A{% endif %}</p>
+                                    <a class="remove-item text-danger" id="remove_{{ item.item_id }}"
+                                        data-product_size="{{ item.size }}">Remove</a>
                                 </div>
                             </div>
                         </td>
                         <td>
-                        <form class="form update-item-form" method="POST" action="{% url 'update_cart' item.item_id %}">
-                        {% csrf_token %}
-                        <input class="form-control" type="text" value="{{ item.quantity }}" name="quantity" min="1" max="49" type="number"
-                        data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                        <button type="submit" class="btn btn-link update-cart">Update cart</button>
-                        {% if item.product.has_sizes %}
-                            <input type="hidden" name="product_size" value="{{ item.size }}">
-                        {% endif %}
-                        </form>
+                            <form class="form update-item-form" method="POST"
+                                action="{% url 'update_cart' item.item_id %}">
+                                {% csrf_token %}
+                                <input class="form-control" type="text" value="{{ item.quantity }}" name="quantity"
+                                    min="1" max="49" type="number" data-item_id="{{ item.item_id }}"
+                                    id="id_qty_{{ item.item_id }}">
+                                <button type="submit" class="btn btn-link update-cart">Update cart</button>
+                                {% if item.product.has_sizes %}
+                                <input type="hidden" name="product_size" value="{{ item.size }}">
+                                {% endif %}
+                            </form>
                         </td>
                         <td>€{{ item.product.price}}</td>
                         <td>€{{ item.product.price | calculate_subtotal:item.quantity }}</td>
@@ -83,7 +87,8 @@
                         Continue shopping</a>
                 </div>
                 <div class="col-12 text-right mt-2">
-                    <a class="btn gk-button btn-lg" href="{% url 'checkout' %}" role="button"><i class="fas fa-lock"></i>
+                    <a class="btn gk-button btn-lg" href="{% url 'checkout' %}" role="button"><i
+                            class="fas fa-lock"></i>
                         Secure checkout </a>
                 </div>
             </div>
@@ -95,28 +100,34 @@
         </div>
         {% endif %}
         <div class="col-sm-12 col-lg-4">
-
+            <h2 class="text-center">Just so you know...</h2>
+            <div class="alert alert-primary" role="alert">
+                All of your orders can be exchanged within 30 days of order being delivered to you, for an added peace
+                of mind.
+            </div>
         </div>
     </div>
-</div>
-{% endblock %}
-{% block postloadjs %}
-{{ block.super }}
+    {% endblock %}
+    {% block postloadjs %}
+    {{ block.super }}
 
-<script type="text/javascript">
-    // Remove item and reload 
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('product_size');
-        var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+    <script type="text/javascript">
+        // Remove item and reload 
+        $('.remove-item').click(function (e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var size = $(this).data('product_size');
+            var url = `/cart/remove/${itemId}/`;
+            var data = {
+                'csrfmiddlewaretoken': csrfToken,
+                'product_size': size
+            };
 
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
-</script>
+            $.post(url, data)
+                .done(function () {
+                    location.reload();
+                });
+        })
+    </script>
 
-{% endblock %}
+    {% endblock %}
