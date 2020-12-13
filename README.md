@@ -163,7 +163,7 @@ It would be great to implement a wishlist feature like those Amazon and the like
 
 ## Testing
 
-Please refer to [TESTING.md](/docs/TESTING.md) for testing documentation
+Please refer to [TESTING.md](./docs/TESTING.md) for testing documentation
 
 ## Deployment
 
