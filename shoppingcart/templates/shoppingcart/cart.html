@@ -2,6 +2,8 @@
 {% load static %}
 {% load shoppingcart_tools %}
 
+{% block extratitle %}Your cart% endblock %}
+
 {% block content %}
 <div class="container-fluid">
     <div class="row">
@@ -25,9 +27,9 @@
                         <td>
                             <div class="media">
                                 {% if item.product.image %}
-                                <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                <img class="img-fluid cart-img" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                 {% else %}
-                                <img class="img-fluid" src="{{ MEDIA_URL }}noimage.svg" alt="{{ item.product.name }}">
+                                <img class="img-fluid cart-img" src="{{ MEDIA_URL }}noimage.svg" alt="{{ item.product.name }}">
                                 {% endif %}
                                 <div class="media-body">
                                     <h5 class="mt-0"><strong>{{ item.product.name }}</strong></h5>
